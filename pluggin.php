@@ -9,5 +9,5 @@
         js.src = "//connect.facebook.net/pt_PT/sdk.js#xfbml=1&version=v2.7";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="800" data-numposts="1"></div>
+<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments/#moderation" data-width="800" data-numposts="1"></div>
 </div>
