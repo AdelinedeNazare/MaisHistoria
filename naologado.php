@@ -1,12 +1,3 @@
-<form action="valida.php" method="POST">
-    <form class="form-login">
-        <div class="form-group-sm">
-            <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="email">
-        </div>
-        <div class="form-group-sm">
-            <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Senha">
-        </div>
-        <button type="submit" class="btn btn-default btn-sm">Entrar </button>
         <p class="text-center text-danger">
             <?php
             if (isset($_SESSION['loginErro'])) {
@@ -23,5 +14,4 @@
             }
             ?>
         </p>
-    <a href="cadastro.php">Registre-se professor</a>
-</form>
+    <a href="cadastro.php"> Registre-se professor</a>

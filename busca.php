@@ -38,7 +38,8 @@ include_once 'connection.php';
                 foreach ($searchResult as $row) {
                     ?>
                     <p>
-                        <a href="<?php echo $row['tabela'].'.php?id='.$row['id'] ?>"><?php echo $row['nome'] ?></a><br>
+                        <a href="<?php echo $row['tabela'].'.php?id='.$row['id'] ?>">
+                            <?php echo $row['nome'] ?></a><br>
                         <i><?php echo $row['descricao']?></i>
                     </p>
                     <?php
@@ -50,7 +51,8 @@ include_once 'connection.php';
             }
 
             $stmt->close();
-        } else {
+        }
+        else {
             echo 'asdalsdjas';
         }
         ?>
