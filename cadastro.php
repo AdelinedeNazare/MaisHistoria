@@ -19,7 +19,7 @@ include_once 'connection.php';
             ?>
 
             <center> <h1>Cadastro de usuário</h1> </center>
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="" method="post">
 
                 <div class="form-group">
                     <label for="nome" class="col-sm-2 control-label">Nome:</label>
@@ -64,7 +64,17 @@ include_once 'connection.php';
                     </div>
                 </div>
             </form>
+            <?php
+            if (isset($_POST['enviar'])) {
 
+                create('professor', 'tb_usuario', $caduser);
+                if (create == true) {
+                    echo "cadastro realizado com sucesso!";
+                } else {
+                    echo "cadastro realizado sem sucesso!";
+                }
+            }
+            ?>
         </div>
         <?php
         include_once 'footer.php';
