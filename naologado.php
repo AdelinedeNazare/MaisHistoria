@@ -14,4 +14,4 @@
             }
             ?>
         </p>
-    <a href="cadastro.php"> Registre-se professor</a>
+    <a href="cadastro.php"> Não possui conta? Registre-se professor</a>

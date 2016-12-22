@@ -18,7 +18,7 @@ include_once 'connection.php';
             include_once 'carrosel.php';
             ?>
 
-            <h1>Cadastro de usuário</h1>
+            <center> <h1>Cadastro de usuário</h1> </center>
             <form class="form-horizontal">
 
                 <div class="form-group">
