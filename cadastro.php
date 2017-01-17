@@ -97,11 +97,16 @@ include_once 'connection.php';
 
                 if ($stmtUser->execute()) {
                     echo "<h2 align='center'>cadastro realizado com sucesso!</h2>";
+                    ?>
+                    <script type="text/javascript">
+                        setTimeout(function () {
+                            location.href = 'entre.php';
+                        }, 2500);
+                    </script>
+                    <?php
                 } else {
                     echo "<h2 align='center'>cadastro realizado sem sucesso!</h2>";
                 }
-
-
             }
             ?>
         </div>
