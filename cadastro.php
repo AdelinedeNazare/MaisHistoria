@@ -28,6 +28,13 @@ include_once 'connection.php';
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="cpf" class="col-sm-2 control-label">CPF:</label>
+                    <div class="col-sm-8">
+                        <input type="tel" class="form-control" name="cpf" placeholder="12345678909" size="11">
+
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">email:</label>
                     <div class="col-sm-8">
                         <input type="email" class="form-control" name="email" placeholder="maishistoria@gmail.com">
@@ -42,7 +49,7 @@ include_once 'connection.php';
                 <div class="form-group">
                     <label for="data" class="col-sm-2 control-label">Data de Nascimento:</label>
                     <div class="col-sm-8">
-                        <input type="date" class="form-control" name="data">
+                        <input type="date" class="form-control" name="data" placeholder="25/11/0000">
                     </div>
                 </div>
                 <div class="form-group">
@@ -57,7 +64,13 @@ include_once 'connection.php';
                     <div class="col-sm-8">
                         <input type="text" class="form-control" name="instituicao" placeholder="IFTO- Campus Araguaína">
                     </div>
-                </div>    
+                </div>
+                <div class="form-group">
+                    <label for="endereco" class="col-sm-2 control-label">Endereço:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="endereco" placeholder="Avenida Tocantins, S/N">
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-8">
                         <button type="submit" name="enviar" class="btn btn-default">Cadastrar</button>
@@ -66,12 +79,33 @@ include_once 'connection.php';
             </form>
             <?php
             if (isset($_POST['enviar'])) {
+                $queryProfessor = 'INSERT INTO professor (nome, cpf, telefone, email, instituicao, endereco, data_nascimento) VALUES (?, ?, ?, ?, ?, ?, ?)';
+                $stmtProfessor = $conn->prepare($queryProfessor);
+                $dataNascimento = join('-', array_reverse(preg_split('/\//', $_POST['data'])));
+                $stmtProfessor->bind_param('sssssss', $_POST['nome'], $_POST['cpf'], $_POST['telefone'], $_POST['email'],
+                    $_POST['instituicao'], $_POST['endereco'], $dataNascimento);
+                $stmtProfessor->execute();
 
-                create('professor', 'tb_usuario', $caduser);
-                if (create == true) {
-                    echo "cadastro realizado com sucesso!";
+                $queryUser = 'INSERT INTO tb_usuario (usuario, senha, professor_idprofessor, ativo, niveis_acesso_id) VALUES (?, ?, ?, ?, ?)';
+                $stmtUser = $conn->prepare($queryUser);
+                $senha = md5($_POST['senha']);
+                $id = $stmtProfessor->insert_id;
+                $isAtivo = true;
+                $nivelAcesso = 3;
+
+                $stmtUser->bind_param('ssiii', $_POST['email'], $senha, $id, $isAtivo, $nivelAcesso);
+
+                if ($stmtUser->execute()) {
+                    echo "<h2 align='center'>cadastro realizado com sucesso!</h2>";
+                    ?>
+                    <script type="text/javascript">
+                        setTimeout(function () {
+                            location.href = 'entre.php';
+                        }, 2500);
+                    </script>
+                    <?php
                 } else {
-                    echo "cadastro realizado sem sucesso!";
+                    echo "<h2 align='center'>cadastro realizado sem sucesso!</h2>";
                 }
             }
             ?>
