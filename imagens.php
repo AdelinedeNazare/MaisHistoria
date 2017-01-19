@@ -20,7 +20,7 @@ include_once 'connection.php';
             </div>
             <?php
             //$id = $_GET["id"];
-            $query = "SELECT * FROM tb_imagens WHERE tb_imagens.idimagens=5 or tb_imagens.idimagens=1";
+            $query = "SELECT * FROM tb_imagens WHERE tb_imagens.idimagens=tb_imagens.idimagens";
             $imagem = $conn->query($query);
 
             if ($imagem->num_rows) {
@@ -30,6 +30,24 @@ include_once 'connection.php';
                 $nomeImagem = $resultado['nome'];
                 $urlImagem = $resultado['url'];
                 $descricaoImagem = $resultado['descricao'];
+                echo "<font size='6' style='color:#005858;'> " . $nomeImagem;
+                echo "</font>";
+                echo "<br><img src=$urlImagem ";
+                echo "<br><br>" . $descricaoImagem;
+                echo "<br><br>";
+            } else {
+                header("Location: http://localhost/error.php");
+                die();
+            }
+            if ($imagem->num_rows) {
+                $resultado = $imagem->fetch_assoc();
+
+                $idImagem = $resultado['idimagens'];
+                $nomeImagem = $resultado['nome'];
+                $urlImagem = $resultado['url'];
+                $descricaoImagem = $resultado['descricao'];
+
+
                 echo "<font size='6' style='color:#005858;'> " . $nomeImagem;
                 echo "</font>";
                 echo "<br><img src=$urlImagem ";
