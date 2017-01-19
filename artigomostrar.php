@@ -41,7 +41,7 @@ include_once 'connection.php';
             <?php echo $resultado['documento']; ?>
             <h4 style="color:#005858;"> Por: <?= $professor['nome']; ?></h4>
             <h4 style="color:#005858;"> Autor(a) do artigo: <?php echo $resultado['autor_artigo']; ?></h4>
-            <br />
+            <br />  <a href='artigo.php'>  <center> <font size='5'> Volte a página anterior... </font></center> </a> </div> <br>
             <br /> 
             
         </div>

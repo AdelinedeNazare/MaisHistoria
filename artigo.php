@@ -55,10 +55,7 @@ include_once 'connection.php';
             ?> 
 
 
-            <br> </div>
-        <?php
-        include_once 'pluggin.php';
-        include_once 'footer.php';
-        ?>
+            <br> </div> 
+        
     </body>
 </html>
