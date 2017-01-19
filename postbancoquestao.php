@@ -48,21 +48,21 @@ include_once 'util.php';
             <div class="col-sm-4 col-sm-offset-4">
                 <form class="form-inline" action="" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="nome" class="col-sm-2 control-label">Nome:</label>
+                        <label for="nome" class="col-sm-2 control-label">Nome:</label><br>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" name="nome"
                                    placeholder="Qual o motivo da 1º Guerra Mundial?">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="descricao" class="col-sm-2 control-label">Enunciado:</label>
+                        <label for="descricao" class="col-sm-2 control-label">Enunciado:</label><br>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" name="descricao"
                                    placeholder="Seu texto aqui.">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="assunto" class="col-sm-2 control-label">Assunto:</label>
+                        <label for="assunto" class="col-sm-2 control-label">Assunto:</label><br>
                         <div class="col-sm-8">
                             <select title="assunto" name="assunto">
 								<?php showSubjects($conn); ?>
