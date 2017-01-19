@@ -11,11 +11,11 @@ include_once 'connection.php';
             ?>
         </header>
         <?php
-        $id = $_GET["id"];
-        $queryVideo = "SELECT * FROM tb_videos WHERE tb_videos.idVideos = $id";
+       // $id = $_GET["id"];
+        $queryVideo = "SELECT * FROM tb_videos ";
         $videos = $conn->query($queryVideo);
 
-        if ($videos->num_rows == 1) {
+        if ($videos->num_rows) {
             $resultado = $videos->fetch_assoc();
             $nomevideo=$resultado['nomevideo'];
             $urlvideos = $resultado['url'];
