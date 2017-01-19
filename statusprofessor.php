@@ -27,12 +27,10 @@ include_once 'connection.php';
                                 <thead>
                                     <tr>
                                         <th class="warning" col-md-8>Nome do Arquivo</th>
-                                        <th class="warning" col-md-1>Data de Submissão</th>
                                         <th class="warning" col-md-1>Estado</th>
                                     </tr>
                                     <tr>
                                         <th class="info" col-md-8></th>
-                                        <th class="info" col-md-1></th>
                                         <th class="info" col-md-1></th>
                                     </tr>
                                 </thead>
