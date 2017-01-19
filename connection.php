@@ -3,7 +3,7 @@ session_start();
 
 $host = "localhost";
 $user = "root";
-$pass = "";
+$pass = "RsF3546SKY.;Queopps";
 $db = "maishistoria";
 $port = "3306";
 
