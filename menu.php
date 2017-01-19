@@ -12,7 +12,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li> <a href="artigo.php">Artigos</a> </li>
+                <li><a href="artigo.php">Artigos</a> </li>
                 <li><a href="imagens.php">Imagens</a></li>
                 <li><a href="videos.php">Vídeos</a></li>
                 <li><a href="bancodequestoes.php">Banco de questões</a></li>
