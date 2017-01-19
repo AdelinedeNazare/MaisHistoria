@@ -3,7 +3,7 @@ session_start();
 
 $host = "localhost";
 $user = "root";
-$pass = "***REMOVED***";
+$pass = "";
 $db = "maishistoria";
 $port = "3306";
 
