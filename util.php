@@ -32,14 +32,14 @@ function uploadFile($conn, $table = 'tb_videos', $name = 'nomevideo', $urlField 
 
 	if ($table === 'tb_artigos') {
 		$autor = mysqli_real_escape_string($conn, $_SESSION['nomeprofessor']);
+		$responderDuvidas = '';
 
-		$query = " <br>INSERT INTO $table ($name, documento, $urlField, autor_artigo, professor_idprofessor,"
-			. ' tb_assunto_idassunto) VALUES (?, ?, ?, ?, ?, ?) <br><br>';
+		$query = "INSERT INTO $table ($name, documento, $urlField, autor_artigo, professor_idprofessor,"
+			. ' tb_assunto_idassunto, responder_duvidas) VALUES (?, ?, ?, ?, ?, ?, ?)';
 
 		$stmt = $conn->prepare($query);
 
-		$stmt->bind_param('ssssii', $nome, $descricao, $url, $idProfessor, $idAssunto);
-		$stmt->bind_param('ssssii', $nome, $descricao, $url, $autor, $idProfessor, $idAssunto);
+		$stmt->bind_param('ssssiis', $nome, $descricao, $url, $autor, $idProfessor, $idAssunto, $responderDuvidas);
 	} else {
 		$query = "INSERT INTO $table ($name, descricao, $urlField, professor_idprofessor, tb_assunto_idassunto) " .
 			'VALUES (?, ?, ?, ?, ?)';
