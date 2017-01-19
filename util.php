@@ -33,8 +33,8 @@ function uploadFile($conn, $table = 'tb_videos', $name = 'nomevideo', $urlField 
 	if ($table === 'tb_artigos') {
 		$autor = mysqli_real_escape_string($conn, $_SESSION['nomeprofessor']);
 
-		$query = "INSERT INTO $table ($name, documento, $urlField, autor_artigo, professor_idprofessor,"
-			. ' tb_assunto_idassunto) VALUES (?, ?, ?, ?, ?, ?)';
+		$query = " <br>INSERT INTO $table ($name, documento, $urlField, autor_artigo, professor_idprofessor,"
+			. ' tb_assunto_idassunto) VALUES (?, ?, ?, ?, ?, ?) <br><br>';
 
 		$stmt = $conn->prepare($query);
 
@@ -91,10 +91,10 @@ function showSubjects($conn)
 {
 	if ($assuntos = $conn->query('SELECT * FROM tb_assunto')) {
 		while ($assunto = $assuntos->fetch_assoc()) {
-			$value = $assunto['idassunto'];
-			$display = $assunto['nomeassunto'] . ', ' . $assunto['tipo'];
+			echo"<br><br>";$value = $assunto['idassunto']; echo"<br><br>";
+			echo"<br><br>";$display = $assunto['nomeassunto'] . ', ' . $assunto['tipo'];echo"<br><br>";
 
-			echo "<option value='$value'>$display</option>";
+			echo "<br><option value='$value'>$display</option>";
 		}
 	}
 }
