@@ -1,46 +1,76 @@
 <?php
 include_once 'connection.php';
+include_once 'util.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-    <body>
-        <header>
-            <?php
-            include_once 'login.php';
-            include_once 'homeadm.php';
-            ?>
-        </header>
-        <div class="container conteudo">
-            <?php
-            include_once 'carrosel.php';
-            ?>
-            <div id="gtco-started" style="background-color: #A54812 ">
-                <div class="row animate-box">
-                    <div class="col-md-8 col-md-offset-2 text-center gtco-heading ">
-                        <font color="#D68C2C" >
-                        <h2>Insira aqui seu vídeo:</h2>
-                        <hr>  
+<body>
+<header>
+	<?php
+	include_once 'login.php';
+	include_once 'homeadm.php';
+	?>
+</header>
+<div class="container conteudo">
+	<?php
+	include_once 'carrosel.php';
+
+	if (isset($_POST['enviar'])) {
+		uploadFile($conn);
+	}
+	?>
+
+    <div id="gtco-started" style="background-color: #A54812 ">
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center gtco-heading ">
+                <h2>Insira aqui seu vídeo:</h2>
+                <hr>
+            </div>
+            <div class="col-sm-4 col-sm-offset-4">
+                <form class="form-inline" action="" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="nome" class="col-sm-2 control-label">Nome:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="nome" placeholder="1º Guerra Mundial">
+                        </div>
                     </div>
-                    <div class="col-sm-4 col-sm-offset-4">
-                        <form class="form-inline" action="" method="post" enctype="multipart/form-data">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    <input type="file" class="form-control" name="imagem" required="">
-                                </div>                             
-                            </div>
-                   </div> <br>
-                    <br><div class="col-md-2 col-sm-offset-5">
-                        <Br><button type="submit" name="enviar" class="btn btn-default btn-block"><b>Enviar Vídeo</b></button> <br>
-                    </div> 
-                    <div class="col-md-4 col-sm-offset-5">
-                        <a href="postsgeral.php" > <font color="#D68C2C" size="4"> Volte para a página anterior...</a>
+                    <div class="form-group">
+                        <label for="descricao" class="col-sm-2 control-label">Descrição:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="descricao"
+                                   placeholder="Documentário sobre a 1º Guerra Mundial">
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="assunto" class="col-sm-2 control-label">Assunto:</label>
+                        <div class="col-sm-8">
+                            <select title="assunto" name="assunto">
+								<?php showSubjects($conn); ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <input type="file" class="form-control" name="arquivo" required="">
+                        </div>
+                    </div>
+            </div>
+            <br>
+            <br>
+            <div class="col-md-2 col-sm-offset-5">
+                <Br>
+                <button type="submit" name="enviar" class="btn btn-default btn-block"><b>Enviar Vídeo</b></button>
+                <br>
+            </div>
+            <div class="col-md-4 col-sm-offset-5">
+                <a href="postsgeral.php">Volte para a página anterior...</a>
             </div>
         </div>
- <br>        
+    </div>
+</div>
+
 <?php
 include_once 'footer.php';
-?> 
-    </body>
+?>
+</body>
 </html>
