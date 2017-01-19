@@ -5,7 +5,6 @@
         </div>
         <div class="col-sm-3 col-sm-offset-6">
             <div class="panel panel-success">
-                <div class="panel-heading"><a href="entre.php"> Faça seu login aqui!</a></div>
                 <?php
                     if (!empty($_SESSION['usuario'])) {
                         include 'logado.php';
