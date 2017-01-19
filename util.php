@@ -38,6 +38,7 @@ function uploadFile($conn, $table = 'tb_videos', $name = 'nomevideo', $urlField 
 
 		$stmt = $conn->prepare($query);
 
+		$stmt->bind_param('ssssii', $nome, $descricao, $url, $idProfessor, $idAssunto);
 		$stmt->bind_param('ssssii', $nome, $descricao, $url, $autor, $idProfessor, $idAssunto);
 	} else {
 		$query = "INSERT INTO $table ($name, descricao, $urlField, professor_idprofessor, tb_assunto_idassunto) " .
