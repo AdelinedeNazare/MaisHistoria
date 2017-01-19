@@ -10,23 +10,6 @@ include_once 'connection.php';
             include_once 'menu.php';
             ?>
         </header>
-        <?php
-        $id = $_GET["id"];
-        $query = "SELECT * FROM tb_imagens WHERE tb_imagens.idimagens = $id";
-        $imagem = $conn->query($query);
-
-        if ($imagem->num_rows == 1) {
-            $resultado = $imagem->fetch_assoc();
-            $idImagem = $resultado['idimagens'];
-            $nomeImagem = $resultado['nome'];
-            $urlImagem = $resultado['url'];
-            $descricaoImagem = $resultado['descricao'];           
-        } 
-        else {
-            header("Location: http://localhost/error.php");
-            die();
-        }
-        ?>
         <div class="container conteudo">
             <?php
             include_once 'carrosel.php';
@@ -34,18 +17,57 @@ include_once 'connection.php';
             <div class="row destaque">
                 <h2 style="color:#005858;">Imagens:</h2>
                 <hr>
-                
+
             </div>
-            <h3> <b><?php echo $resultado['nome']; ?></b></h3>
-            <br />  
-            <br /> <?php echo " <img src='$urlImagem' alt='$nomeImagem' > ";?> 
-            <br /> <?php echo $resultado['descricao']; ?> 
-            <br />
-            <br /> 
+        <?php
+        //$id = $_GET["id"];
+        $query = "SELECT * FROM tb_imagens WHERE tb_imagens.idimagens=5 or tb_imagens.idimagens=1";
+        $imagem = $conn->query($query);
+
+        if ($imagem->num_rows ) {
+            $resultado = $imagem->fetch_assoc();
+
+                $idImagem = $resultado['idimagens'];
+                $nomeImagem = $resultado['nome'];
+                $urlImagem = $resultado['url'];
+                $descricaoImagem = $resultado['descricao'];
+
+                
+                echo "<font size='6' style='color:#005858;'> ".$nomeImagem;
+                echo "</font>";
+                 echo "<br><img src=$urlImagem ";
+                 echo "<br><br>".$descricaoImagem;
+                 echo "<br><br>";
+               }
+          else {
+            header("Location: http://localhost/error.php");
+            die();
+        }
+        if ($imagem->num_rows ) {
+            $resultado = $imagem->fetch_assoc();
+
+                $idImagem = $resultado['idimagens'];
+                $nomeImagem = $resultado['nome'];
+                $urlImagem = $resultado['url'];
+                $descricaoImagem = $resultado['descricao'];
+
+                
+                echo "<font size='6' style='color:#005858;'> ".$nomeImagem;
+                echo "</font>";
+                 echo "<br><img src=$urlImagem ";
+                 echo "<br><br>".$descricaoImagem;
+                 echo "<br><br>";
+               }
+          else {
+            header("Location: http://localhost/error.php");
+            die();
+        }
+        ?>
+             </div>
             <?php
             include_once 'pluggin.php';
             include_once 'footer.php';
             ?>
-        </div>
+       
     </body>
 </html>
