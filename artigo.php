@@ -19,9 +19,7 @@ include_once 'connection.php';
                 <hr>
             </div>
             <?php
-            //$id = $_GET["id"];
             $query = "SELECT * FROM tb_artigos JOIN tb_assunto ON tb_artigos.tb_assunto_idassunto = tb_assunto.idassunto;";
-            // $query = "SELECT * FROM tb_artigos, tb_assunto, professor where tb_artigos.tb_assunto_idassunto = tb_assunto.idassunto and professor.idprofessor=tb_artigos.professor_idprofessor";
             $artigo = $conn->query($query);
 
             if ($artigo->num_rows) {
@@ -34,19 +32,17 @@ include_once 'connection.php';
                 $tabela .= '</tr>';
                 $tabela .= '<tr>';
 
-                foreach ($artigo as $art) {
-                    $resultado = $art; //$artigo->fetch_assoc();
-
+                foreach ($artigo as $resultado) {
                     $idProfessor = $resultado['professor_idprofessor'];
-                    //$queryProfessor = "SELECT * FROM professor WHERE idprofessor = $idProfessor";
-                    //$professor = $conn->query($queryProfessor)->fetch_assoc();
+                    $idArtigo = $resultado['id_artigos'];
 
-                    $tabela .= '<td class="info" col-md-1>' . $resultado['id_artigos'] . '</td>';
-                    $tabela .= '<td class="info" col-md-1>' .$resultado['nome'] . '</a></td>'; 
-                    $tabela .= '<td class="info" col-md-1>'.$resultado['imagem']. 'Acesse</a></td>'; 
+                    $tabela .= "<td class='info col-md-1'>$idArtigo</td>";
+                    $tabela .= '<td class="info col-md-8">' .$resultado['nome'] . '</td>';
+                    $tabela .= "<td class='info col-md-3'><a href='artigomostrar.php?id=$idArtigo'>Acesse</a></td>";
                     $tabela .= '</tr>';
                     $tabela .= ' </thead>';
                 }
+
                 echo $tabela;
             } else {
                 header("Location: http://localhost/error.php");
