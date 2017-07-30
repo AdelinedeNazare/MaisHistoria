@@ -19,7 +19,12 @@ include_once 'connection.php';
                 <hr>
             </div>
             <?php
-            $query = "SELECT * FROM tb_artigos JOIN tb_assunto ON tb_artigos.tb_assunto_idassunto = tb_assunto.idassunto";
+            $idArtigo = $_GET['id'];
+            $query = "SELECT * FROM tb_artigos 
+                      JOIN tb_assunto 
+                      ON tb_artigos.tb_assunto_idassunto = tb_assunto.idassunto 
+                      WHERE id_artigos = $idArtigo";
+
         $artigo = $conn->query($query);
 
         if ($artigo->num_rows >0 ) {
@@ -27,24 +32,28 @@ include_once 'connection.php';
             $idProfessor = $resultado['professor_idprofessor'];
             $queryProfessor = "SELECT * FROM professor WHERE idprofessor = $idProfessor";
             $professor = $conn->query($queryProfessor)->fetch_assoc();
-        } 
+        }
         else {
-            //header("Location: http://localhost/error.php");
+            header("Location: http://localhost/error.php");
             die();
         }
-            
+
             ?>
             <h3 align="middle"> <b><?php echo $resultado['nome']; ?></b></h3>
-            <br />  
-            <br /> 
-            <br /> 
+            <br />
+            <br />
+            <br />
             <?php echo $resultado['documento']; ?>
             <h4 style="color:#005858;"> Por: <?= $professor['nome']; ?></h4>
             <h4 style="color:#005858;"> Autor(a) do artigo: <?php echo $resultado['autor_artigo']; ?></h4>
-            <br />  <a href='artigo.php'>  <center> <font size='5'> Volte a página anterior... </font></center> </a> </div> <br>
-            <br /> 
-            
+            <br />
+            <a href='artigo.php' style="text-align: center; font-size: 25px; display: inline-block; width: 100%">
+                Volte a página anterior...
+            </a>
         </div>
+        <br>
+        <br>
+
         <?php
         include_once 'pluggin.php';
         include_once 'footer.php';
