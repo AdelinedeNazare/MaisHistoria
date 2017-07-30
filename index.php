@@ -28,7 +28,7 @@
                             while ($artigo = $artigos->fetch_assoc()) {
                                 $idArtigo = $artigo['id_artigos'];
                                 $nomeArtigo = $artigo['nome'];
-                                echo "<li><a href='artigo.php?id=$idArtigo'>$nomeArtigo</a></li>";
+                                echo "<li><a href='artigomostrar.php?id=$idArtigo'>$nomeArtigo</a></li>";
                             }
                         } else {
                             echo "<li>Não há artigos cadastrados, ainda!</li>";
